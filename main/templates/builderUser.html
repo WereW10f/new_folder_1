@@ -1,0 +1,12 @@
+{% include 'base_template.html' %}
+{% block content %}
+<form>
+    {{form_user}}
+    <button id='saveAndClose' type="submit">
+        Сохранить и закрыть
+    </button>
+    <button id="close" type=reset>
+        Закрыть
+    </button>
+</form>
+{% endblock %}
