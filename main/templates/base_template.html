@@ -11,41 +11,6 @@
 <footer>
 
     {% block script %}
-    <script>
-        function newPlusWindow(url, nameSelector) {
-            var h = 500,
-                w = 500,
-                splitURL = url.split('/'),
-                action = splitURL[splitURL.length - 1],
-                selected = document.querySelector('#id_' + nameSelector),
-                attr='scrollbars=1,height=' + Math.min(h, screen.availHeight) + ',width=' + Math.min(w, screen.availWidth) + ',left=' + Math.max(0, (screen.availWidth - w) / 2) + ',top=' + Math.max(0, (screen.availHeight - h) / 2);
-            if (selected?.value) {
-                GETQuery = url + '?' + nameSelector + '=' + selected.value
-            }
-            switch (action) {
-                case 'edit':
-                    chaildWindow = window.open(GETQuery, '',attr );
-                    break;
-                case 'delete':
-                    if (!selected?.value) { alert("Выберите элемент для удаления") }
-                    else {
-                        if (confirm('Удалить элемент ?')) {
-                            var x = new XMLHttpRequest();
-                            x.open("GET", GETQuery, true);
-                            x.onload = function () {
-                                alert(x.responseText);
-                            }
-                            x.send(null);
-                        }
-                    }
-                    break;
-                case 'add':
-                    chaildWindow = window.open(url, '', attr);
-                    break;
-            }
-           chaildWindow?.focus()
-            
-        }
-    </script>
+    <script src='\static\widgetSelectPlus.js'></script>
     {% endblock %}
 </footer>
